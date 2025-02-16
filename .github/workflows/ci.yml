@@ -3,7 +3,7 @@ name: Create a flutter build release
 on:
     push:
         branches:
-            - main
+            - release
 
 permissions:
     contents: write
