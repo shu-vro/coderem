@@ -65,7 +65,7 @@ class Introduction extends StatelessWidget {
                   ),
                   child: Text(
                     title,
-                    style: TextStyle(fontSize: 14, color: Colors.white),
+                    style: TextStyle(fontSize: 12, color: Colors.white),
                   ),
                 ),
               ],
