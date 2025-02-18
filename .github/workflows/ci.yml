@@ -1,6 +1,7 @@
 name: Create a flutter build release
 
 on:
+    workflow_dispatch:
     push:
         branches:
             - release
@@ -9,6 +10,16 @@ permissions:
     contents: write
 
 jobs:
+    check-creator:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check if actor is the repository owner
+              run: |
+                  if [ "${{ github.actor }}" != "${{ github.repository_owner }}" ]; then
+                    echo "Only the repository owner can dispatch this workflow."
+                    exit 1
+                  fi
+
     build:
         runs-on: ubuntu-latest
 
@@ -43,7 +54,7 @@ jobs:
               with:
                   artifacts: "build/app/outputs/flutter-apk/*.apk"
                   token: ${{ secrets.GITHUB_TOKEN }}
-                  tag: v1.0.${{ github.run_number }}
+                  tag: v0.0.${{ github.run_number }}
                   name: Release 1.0.${{ github.run_number }}
                   body: "${{ github.event.head_commit.message }}"
                   draft: false
