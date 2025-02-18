@@ -1,5 +1,32 @@
 import 'package:flutter/material.dart';
 
+// based on codeforces rank, make a function that will return color based on rank
+Color getColor(String rank) {
+  if (rank == "newbie") {
+    return Colors.black;
+  } else if (rank == "pupil") {
+    return Colors.green;
+  } else if (rank == "specialist") {
+    return Colors.blue;
+  } else if (rank == "expert") {
+    return Colors.cyan;
+  } else if (rank == "candidate master") {
+    return Colors.purple;
+  } else if (rank == "master") {
+    return Colors.orange;
+  } else if (rank == "international master") {
+    return Colors.orange[800] ?? Colors.orange;
+  } else if (rank == "grandmaster") {
+    return Colors.red;
+  } else if (rank == "international grandmaster") {
+    return Colors.red[800] ?? Colors.red;
+  } else if (rank == "legendary grandmaster") {
+    return Colors.red[900] ?? Colors.red;
+  } else {
+    return Colors.grey;
+  }
+}
+
 class Introduction extends StatelessWidget {
   final String name;
   final int rating;
@@ -60,7 +87,7 @@ class Introduction extends StatelessWidget {
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.red[800],
+                    color: getColor(title),
                     borderRadius: BorderRadius.circular(100),
                   ),
                   child: Text(

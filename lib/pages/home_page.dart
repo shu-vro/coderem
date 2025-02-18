@@ -1,21 +1,21 @@
 import 'package:coderem/ApiCalls/user_contests_req.dart';
 import 'package:coderem/ApiCalls/user_req.dart';
 import 'package:coderem/ApiCalls/user_submissions_req.dart';
-import 'package:coderem/Widgets/Contests.dart';
-import 'package:coderem/Widgets/FutureBuilderCustom.dart';
-import 'package:coderem/Widgets/Introduction.dart';
-import 'package:coderem/Widgets/Submissions.dart';
+import 'package:coderem/Widgets/contests.dart';
+import 'package:coderem/Widgets/future_builder_custom.dart';
+import 'package:coderem/Widgets/introduction.dart';
+import 'package:coderem/Widgets/submissions.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  _HomeState createState() => _HomeState();
+  State<HomePage> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<HomePage> {
   late Future<String?> _handleFuture;
 
   @override
@@ -84,6 +84,13 @@ class _HomeState extends State<Home> {
                     title: Text('Home'),
                     onTap: () {
                       Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    title: Text('Set Alarm'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/alarm');
                     },
                   ),
                   ListTile(

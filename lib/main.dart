@@ -1,5 +1,6 @@
-import 'package:coderem/pages/Home.dart';
-import 'package:coderem/pages/Login.dart';
+import 'package:coderem/pages/alarm_page.dart';
+import 'package:coderem/pages/home_page.dart';
+import 'package:coderem/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,10 +23,11 @@ class MyApp extends StatelessWidget {
         fontFamily: "TypoRound",
         useMaterial3: true,
       ),
-      home: const Home(),
+      home: const HomePage(),
       routes: {
-        '/home': (context) => const Home(),
-        '/login': (context) => const Login(),
+        '/home': (context) => const HomePage(),
+        '/login': (context) => const LoginPage(),
+        '/alarm': (context) => const AlarmPage(),
       },
     );
   }
