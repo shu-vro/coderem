@@ -44,7 +44,14 @@ Future<List<Contest>> fetchContests() async {
     Map<String, dynamic> jsonResponse = json.decode(response.body);
     if (jsonResponse['status'] == 'OK') {
       List<dynamic> results = jsonResponse['result'];
-      return results.map((json) => Contest.fromJson(json)).toList();
+      // filter those contests which are phase = 'BEFORE'
+      results =
+          results.where((contest) => contest['phase'] == 'BEFORE').toList();
+      return results
+          .map((json) => Contest.fromJson(json))
+          .toList()
+          .reversed
+          .toList();
     } else {
       throw Exception('Failed to load contests');
     }

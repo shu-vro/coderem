@@ -41,7 +41,6 @@ Future<List<UserContest>> fetchUserContests(String handle) async {
     Map<String, dynamic> jsonResponse = json.decode(response.body);
     if (jsonResponse['status'] == 'OK') {
       List<dynamic> results = jsonResponse['result'];
-      print(results.toString());
       return results
           .map((json) => UserContest.fromJson(json))
           .toList()
