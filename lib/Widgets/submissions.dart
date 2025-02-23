@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:coderem/ApiCalls/user_submissions_req.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -11,7 +13,7 @@ class Submissions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: submissions.length,
+      itemCount: min(submissions.length, 15),
       itemBuilder: (context, index) {
         final submission = submissions[index];
         return Container(

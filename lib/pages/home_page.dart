@@ -4,6 +4,7 @@ import 'package:coderem/ApiCalls/user_submissions_req.dart';
 import 'package:coderem/Widgets/contests.dart';
 import 'package:coderem/Widgets/future_builder_custom.dart';
 import 'package:coderem/Widgets/introduction.dart';
+import 'package:coderem/Widgets/overview.dart';
 import 'package:coderem/Widgets/submissions.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -165,7 +166,11 @@ class _HomeState extends State<HomePage> {
                                         MediaQuery.of(context).padding.top,
                                     child: TabBarView(
                                       children: [
-                                        Icon(Icons.directions_car),
+                                        Overview(
+                                          user: user,
+                                          submissions: submissions,
+                                          contests: contests,
+                                        ),
                                         Submissions(
                                           handle: handle,
                                           submissions: submissions,
