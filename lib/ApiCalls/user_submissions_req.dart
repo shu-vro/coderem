@@ -7,6 +7,7 @@ class Problem {
   final String name;
   final String type;
   final double points;
+  final double rating;
   final List<String> tags;
 
   Problem({
@@ -15,6 +16,7 @@ class Problem {
     required this.name,
     required this.type,
     required this.points,
+    required this.rating,
     required this.tags,
   });
 
@@ -24,6 +26,7 @@ class Problem {
       index: json['index'] ?? '',
       name: json['name'] ?? '',
       type: json['type'] ?? '',
+      rating: (json['rating'] ?? 0).toDouble(),
       points: (json['points'] ?? 0).toDouble(),
       tags: List<String>.from(json['tags'] ?? []),
     );
@@ -121,8 +124,8 @@ class UserSubmission {
 
 Future<List<UserSubmission>> fetchUserSubmissions(
     String handle, int count) async {
-  final response = await http.get(Uri.parse(
-      'https://codeforces.com/api/user.status?handle=$handle&count=$count'));
+  final response = await http
+      .get(Uri.parse('https://codeforces.com/api/user.status?handle=$handle'));
 
   if (response.statusCode == 200) {
     Map<String, dynamic> jsonResponse = json.decode(response.body);

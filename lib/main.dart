@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
             seedColor: Color(0xffde9d96),
             surface: Color.fromARGB(255, 252, 244, 240)),
-        fontFamily: "TypoRound",
+        fontFamily: "Quicksand",
         useMaterial3: true,
       ),
       home: const HomePage(),

@@ -38,6 +38,7 @@ dependencies:
     http: ^1.3.0
     timeago: ^3.7.0
     intl: ^0.19.0
+    fl_chart: ^0.70.2
 
 dev_dependencies:
     flutter_test:
@@ -79,26 +80,17 @@ flutter:
     # list giving the asset and other descriptors for the font. For
     # example:
     fonts:
-        - family: TypoRound
+        - family: Quicksand
           fonts:
-              - asset: assets/fonts/typo-round/Typo_Round_Bold_Demo.otf
+              - asset: assets/fonts/Quicksand/Quicksand-Bold.ttf
                 weight: 700
-              - asset: assets/fonts/typo-round/Typo_Round_Bold_Italic_Demo.otf
-                weight: 700
-                style: italic
-              - asset: assets/fonts/typo-round/Typo_Round_Italic_Demo.otf
-                style: italic
-              - asset: assets/fonts/typo-round/Typo_Round_Light_Demo.otf
+              - asset: assets/fonts/Quicksand/Quicksand-Light.ttf
                 weight: 300
-              - asset: assets/fonts/typo-round/Typo_Round_Light_Italic_Demo.otf
-                weight: 300
-                style: italic
-              - asset: assets/fonts/typo-round/Typo_Round_Regular_Demo.otf
-              - asset: assets/fonts/typo-round/Typo_Round_Thin_Demo.otf
-                weight: 100
-              - asset: assets/fonts/typo-round/Typo_Round_Thin_Italic Demo.otf
-                weight: 100
-                style: italic
+              - asset: assets/fonts/Quicksand/Quicksand-Medium.ttf
+                weight: 500
+              # - asset: assets/fonts/Quicksand/Quicksand-Regular.ttf
+              # - asset: assets/fonts/Quicksand/Quicksand-SemiBold.ttf
+              #   weight: 600
     #   - family: Trajan Pro
     #     fonts:
     #       - asset: fonts/TrajanPro.ttf
