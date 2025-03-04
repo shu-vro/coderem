@@ -8,14 +8,14 @@ class PieChartCustom extends StatelessWidget {
 
   Map<String, int> get submissionsByLanguage {
     final Map<String, int> submissionsByLanguage = {};
-    submissions.forEach((submission) {
+    for (var submission in submissions) {
       final language = submission.programmingLanguage;
       if (submissionsByLanguage.containsKey(language)) {
         submissionsByLanguage[language] = submissionsByLanguage[language]! + 1;
       } else {
         submissionsByLanguage[language] = 1;
       }
-    });
+    }
     return submissionsByLanguage;
   }
 

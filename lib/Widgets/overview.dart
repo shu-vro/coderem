@@ -20,7 +20,7 @@ class Overview extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Container(
+          SizedBox(
             height: 180,
             child: ListView(
               scrollDirection: Axis.horizontal,
