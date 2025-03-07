@@ -22,7 +22,7 @@ void callbackDispatcher() {
       String time = getTimeUntilStart(upcoming.startTimeSeconds);
       LocalNotifications.showNotification(
         title: upcoming.name,
-        body: 'Starts in $time',
+        body: '$time until the contest starts',
         payload: "https://codeforces.com/contests",
       );
       print("Alarm Data fetched " + task);
