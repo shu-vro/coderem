@@ -148,25 +148,25 @@ class LocalNotifications {
           log('Notification permissions requested successfully');
         }
       });
-
-      try {
-        final a = AndroidFlutterLocalNotificationsPlugin();
-        final accept = await a.requestExactAlarmsPermission();
-        if (accept == true) {
-          log('scheduleExactAlarm permissions requested successfully');
-        }
-
-        await Permission.scheduleExactAlarm.isDenied.then((value) {
-          if (value) {
-            Permission.scheduleExactAlarm.request();
-            log('scheduleExactAlarm permissions requested successfully');
-          }
-        });
-      } catch (e) {
-        log("Error requesting alarm permissions: $e");
-      }
     } catch (e) {
       log('Error requesting notification permissions: $e');
+    }
+
+    try {
+      final a = AndroidFlutterLocalNotificationsPlugin();
+      final accept = await a.requestExactAlarmsPermission();
+      if (accept == true) {
+        log('scheduleExactAlarm permissions requested successfully');
+      }
+
+      await Permission.scheduleExactAlarm.isDenied.then((value) {
+        if (value) {
+          Permission.scheduleExactAlarm.request();
+          log('scheduleExactAlarm permissions requested successfully');
+        }
+      });
+    } catch (e) {
+      log("Error requesting alarm permissions: $e");
     }
   }
 

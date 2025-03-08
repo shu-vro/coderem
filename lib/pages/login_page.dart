@@ -10,11 +10,12 @@ class LoginPage extends StatefulWidget {
 
 class _LoginState extends State<LoginPage> {
   final TextEditingController _handleController = TextEditingController();
+  final SharedPreferencesAsync prefs = SharedPreferencesAsync();
+  bool _isCheckingUser = false;
 
   Future<void> _submitHandle() async {
     final handle = _handleController.text;
     if (handle.isNotEmpty) {
-      final prefs = await SharedPreferences.getInstance();
       await prefs.setString('handle', handle);
       Navigator.pushReplacementNamed(context, '/home');
     } else {
@@ -37,12 +38,14 @@ class _LoginState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    _checkIfUserExists();
+    if (!_isCheckingUser) {
+      _isCheckingUser = true;
+      _checkIfUserExists();
+    }
   }
 
   Future<void> _checkIfUserExists() async {
-    final prefs = await SharedPreferences.getInstance();
-    final handle = prefs.getString('handle');
+    final handle = await prefs.getString('handle');
     if (handle != null) {
       Navigator.pushReplacementNamed(context, '/home');
     }

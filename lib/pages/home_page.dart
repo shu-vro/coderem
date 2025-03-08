@@ -19,6 +19,8 @@ class HomePage extends StatefulWidget {
 class _HomeState extends State<HomePage> {
   late Future<String?> _handleFuture;
 
+  final SharedPreferencesAsync prefs = SharedPreferencesAsync();
+
   @override
   void initState() {
     super.initState();
@@ -26,8 +28,7 @@ class _HomeState extends State<HomePage> {
   }
 
   Future<String?> _getHandle() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('handle');
+    return await prefs.getString('handle');
   }
 
   @override
@@ -97,7 +98,6 @@ class _HomeState extends State<HomePage> {
                   ListTile(
                     title: Text('Logout'),
                     onTap: () async {
-                      final prefs = await SharedPreferences.getInstance();
                       await prefs.remove('handle');
                       Navigator.pushReplacementNamed(context, '/login');
                     },

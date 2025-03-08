@@ -4,6 +4,7 @@ import 'package:coderem/pages/alarm_page.dart';
 import 'package:coderem/pages/home_page.dart';
 import 'package:coderem/pages/login_page.dart';
 import 'package:coderem/ApiCalls/all_contests_req.dart';
+import 'package:coderem/utils/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:workmanager/workmanager.dart';
@@ -27,11 +28,13 @@ void callbackDispatcher() {
       );
       LocalNotifications.scheduledNotification(
         id: 2,
-        title: upcoming.name,
-        body: 'The contest has started',
+        title: "⚠️ Contest Will Start in 10 Minutes",
+        body: upcoming.name,
         payload: "https://codeforces.com/contests",
-        startTimeSecond: upcoming.startTimeSeconds,
+        startTimeSecond: upcoming.startTimeSeconds - 10 * 60,
       );
+
+      saveContestsOnSharedPreference(contests: contests);
       print("Alarm Data fetched $task");
     }
     return Future.value(true);
