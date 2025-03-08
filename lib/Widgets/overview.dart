@@ -3,6 +3,7 @@ import 'package:coderem/ApiCalls/user_req.dart';
 import 'package:coderem/ApiCalls/user_submissions_req.dart';
 import 'package:coderem/Widgets/bar_chart.dart';
 import 'package:coderem/Widgets/pie_chart.dart';
+import 'package:coderem/Widgets/rating_changes_graph.dart';
 import 'package:flutter/material.dart';
 
 class Overview extends StatelessWidget {
@@ -52,6 +53,24 @@ class Overview extends StatelessWidget {
               ],
             ),
           ),
+          // Container(
+          //   padding: EdgeInsets.symmetric(vertical: 16),
+          //   margin: EdgeInsets.symmetric(horizontal: 16),
+          //   decoration: BoxDecoration(
+          //     color: Color(0x45ECAB85),
+          //     borderRadius: BorderRadius.circular(16),
+          //   ),
+          //   child: Column(
+          //     children: [
+          //       Text(
+          //         "Rating Changes",
+          //         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          //       ),
+          //       RatingChangeGraph(),
+          //     ],
+          //   ),
+          // ),
+          // SizedBox(height: 24),
           Container(
             padding: EdgeInsets.symmetric(vertical: 16),
             margin: EdgeInsets.symmetric(horizontal: 16),

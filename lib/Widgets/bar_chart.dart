@@ -20,7 +20,7 @@ class BarChartSample3State extends State<BarChartSample3> {
     barGroups = getBarGroups();
   }
 
-  List<BarChartGroupData> getBarGroups() {
+  List<MapEntry<int, int>> _getBarGroupsRaw() {
     // Keep only 'OK' submissions and ensure uniqueness by contestId + index
     final uniqueOkSubs = <String, UserSubmission>{};
     for (var submission in widget.submissions) {
@@ -41,6 +41,12 @@ class BarChartSample3State extends State<BarChartSample3> {
 
     final sortedEntries = problemsByRating.entries.toList()
       ..sort((a, b) => a.key.compareTo(b.key));
+
+    return sortedEntries;
+  }
+
+  List<BarChartGroupData> getBarGroups() {
+    final sortedEntries = _getBarGroupsRaw();
 
     return sortedEntries.map((entry) {
       return BarChartGroupData(
@@ -73,8 +79,9 @@ class BarChartSample3State extends State<BarChartSample3> {
         right: 48,
         top: 8,
       ),
-      child: AspectRatio(
-        aspectRatio: 1,
+      child: Container(
+        // aspectRatio: 1,
+        height: _getBarGroupsRaw().length * 14.0,
         child: BarChart(
           BarChartData(
             barTouchData: barTouchData,
