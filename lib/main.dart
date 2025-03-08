@@ -4,7 +4,6 @@ import 'package:coderem/pages/alarm_page.dart';
 import 'package:coderem/pages/home_page.dart';
 import 'package:coderem/pages/login_page.dart';
 import 'package:coderem/ApiCalls/all_contests_req.dart';
-// import 'package:coderem/pages/test.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:workmanager/workmanager.dart';
@@ -18,6 +17,7 @@ void callbackDispatcher() {
       if (contests.isEmpty) {
         return Future.value(false);
       }
+      contests.sort((a, b) => b.startTimeSeconds.compareTo(a.startTimeSeconds));
       Contest upcoming = contests[0];
       String time = getTimeUntilStart(upcoming.startTimeSeconds);
       LocalNotifications.showNotification(
@@ -25,7 +25,14 @@ void callbackDispatcher() {
         body: '$time until the contest starts',
         payload: "https://codeforces.com/contests",
       );
-      print("Alarm Data fetched " + task);
+      LocalNotifications.scheduledNotification(
+        id: 2,
+        title: upcoming.name,
+        body: 'The contest has started',
+        payload: "https://codeforces.com/contests",
+        startTimeSecond: upcoming.startTimeSeconds,
+      );
+      print("Alarm Data fetched $task");
     }
     return Future.value(true);
   });

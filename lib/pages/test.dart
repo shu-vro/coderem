@@ -1,5 +1,5 @@
+import 'package:coderem/local_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:workmanager/workmanager.dart';
 
 class TestPage extends StatelessWidget {
   const TestPage({super.key});
@@ -14,24 +14,13 @@ class TestPage extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () async {
             print("Button clicked");
-            await Workmanager().registerOneOffTask(
-              "fetch_alarm_task",
-              "fetch_alarm_data",
-              // frequency: Duration(seconds: 10),
-              initialDelay: Duration(seconds: 10),
-              // constraints: Constraints(
-              //   networkType: NetworkType.connected,
-              // ),
+            LocalNotifications.scheduledNotification(
+              title: "whatever",
+              body: "I want",
+              payload: "https://google.com",
+              startTimeSecond:
+                  DateTime.now().millisecondsSinceEpoch ~/ 1000 + 10,
             );
-            // await Workmanager().registerPeriodicTask(
-            //   "fetch_alarm_task",
-            //   "fetch_alarm_data",
-            //   frequency: Duration(seconds: 10),
-            //   initialDelay: Duration(seconds: 5),
-            //   // constraints: Constraints(
-            //   //   networkType: NetworkType.connected,
-            //   // ),
-            // );
           },
           child: const Text('Click!'),
         ),
