@@ -18,7 +18,7 @@ void callbackDispatcher() {
       if (contests.isEmpty) {
         return Future.value(false);
       }
-      contests.sort((a, b) => b.startTimeSeconds.compareTo(a.startTimeSeconds));
+      contests.sort((a, b) => a.startTimeSeconds.compareTo(b.startTimeSeconds));
       Contest upcoming = contests[0];
       String time = getTimeUntilStart(upcoming.startTimeSeconds);
       LocalNotifications.showNotification(
