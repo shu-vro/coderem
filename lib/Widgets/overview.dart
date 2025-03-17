@@ -34,9 +34,18 @@ class Overview extends StatelessWidget {
                 ),
                 SizedBox(width: 16),
                 Tile(
+                  title: "Correct Submissions",
+                  value: submissions
+                      .where((element) => element.verdict == "OK")
+                      .length
+                      .toString(),
+                  icon: Icons.task_alt,
+                ),
+                SizedBox(width: 16),
+                Tile(
                   title: "Total Submissions",
                   value: submissions.length.toString(),
-                  icon: Icons.task_alt,
+                  icon: Icons.sensors_outlined,
                 ),
                 SizedBox(width: 16),
                 Tile(
@@ -44,33 +53,28 @@ class Overview extends StatelessWidget {
                   value: contests.length.toString(),
                   icon: Icons.event_available_outlined,
                 ),
-                SizedBox(width: 16),
-                Tile(
-                  title: "Friends",
-                  value: user.friendOfCount.toString(),
-                  icon: Icons.favorite_border,
-                ),
               ],
             ),
           ),
-          // Container(
-          //   padding: EdgeInsets.symmetric(vertical: 16),
-          //   margin: EdgeInsets.symmetric(horizontal: 16),
-          //   decoration: BoxDecoration(
-          //     color: Color(0x45ECAB85),
-          //     borderRadius: BorderRadius.circular(16),
-          //   ),
-          //   child: Column(
-          //     children: [
-          //       Text(
-          //         "Rating Changes",
-          //         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          //       ),
-          //       RatingChangeGraph(),
-          //     ],
-          //   ),
-          // ),
-          // SizedBox(height: 24),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 16),
+            margin: EdgeInsets.symmetric(horizontal: 16),
+            decoration: BoxDecoration(
+              color: Color(0x45ECAB85),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Column(
+              children: [
+                Text(
+                  "Rating Changes",
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                RatingChangeGraph(
+                    contests: contests, maxRating: user.maxRating),
+              ],
+            ),
+          ),
+          SizedBox(height: 24),
           Container(
             padding: EdgeInsets.symmetric(vertical: 16),
             margin: EdgeInsets.symmetric(horizontal: 16),

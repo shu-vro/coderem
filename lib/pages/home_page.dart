@@ -126,60 +126,73 @@ class _HomeState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      Introduction(
-                        name: user.handle,
-                        rating: user.rating,
-                        title: user.rank,
-                        rank: user.maxRating.toString(),
-                        contribution: user.contribution.toString(),
-                      ),
+                      // Introduction(
+                      //   name: user.handle,
+                      //   rating: user.rating,
+                      //   title: user.rank,
+                      //   rank: user.maxRating.toString(),
+                      //   contribution: user.contribution.toString(),
+                      // ),
                       FutureBuilderCustom<UserContest>(
                         future: fetchUserContests(handle),
                         builder: (context, contests) {
                           return FutureBuilderCustom<UserSubmission>(
                             future: fetchUserSubmissions(handle, 15),
                             builder: (context, submissions) {
-                              return DefaultTabController(
-                                length: 3,
-                                child: Column(children: [
-                                  Container(
-                                    color: Colors.white,
-                                    child: TabBar(
-                                      tabs: [
-                                        Tab(
-                                          child: Text("Overview"),
-                                        ),
-                                        Tab(
-                                          child: Text("Submission"),
-                                        ),
-                                        Tab(
-                                          child: Text("Contest"),
-                                        ),
-                                      ],
-                                    ),
+                              return Column(
+                                children: [
+                                  Introduction(
+                                    name: user.handle,
+                                    rating: user.rating,
+                                    title: user.rank,
+                                    rank: contests.first.rank.toString(),
+                                    contribution: user.contribution.toString(),
                                   ),
-                                  Container(
-                                    // device height - appbar height - tabbar height
-                                    height: MediaQuery.of(context).size.height -
-                                        AppBar().preferredSize.height -
-                                        kToolbarHeight * 2 -
-                                        MediaQuery.of(context).padding.top,
-                                    child: TabBarView(
-                                      children: [
-                                        Overview(
-                                          user: user,
-                                          submissions: submissions,
-                                          contests: contests,
+                                  DefaultTabController(
+                                    length: 3,
+                                    child: Column(children: [
+                                      Container(
+                                        color: Colors.white,
+                                        child: TabBar(
+                                          tabs: [
+                                            Tab(
+                                              child: Text("Overview"),
+                                            ),
+                                            Tab(
+                                              child: Text("Submission"),
+                                            ),
+                                            Tab(
+                                              child: Text("Contest"),
+                                            ),
+                                          ],
                                         ),
-                                        Submissions(
-                                          handle: handle,
-                                          submissions: submissions,
+                                      ),
+                                      SizedBox(
+                                        // device height - appbar height - tabbar height
+                                        height: MediaQuery.of(context)
+                                                .size
+                                                .height -
+                                            AppBar().preferredSize.height -
+                                            kToolbarHeight * 2 -
+                                            MediaQuery.of(context).padding.top,
+                                        child: TabBarView(
+                                          children: [
+                                            Overview(
+                                              user: user,
+                                              submissions: submissions,
+                                              contests: contests,
+                                            ),
+                                            Submissions(
+                                              handle: handle,
+                                              submissions: submissions,
+                                            ),
+                                            Contests(contests: contests),
+                                          ],
                                         ),
-                                        Contests(contests: contests),
-                                      ],
-                                    ),
+                                      ),
+                                    ]),
                                   ),
-                                ]),
+                                ],
                               );
                             },
                           );
