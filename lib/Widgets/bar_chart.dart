@@ -79,7 +79,7 @@ class BarChartSample3State extends State<BarChartSample3> {
         right: 48,
         top: 8,
       ),
-      child: Container(
+      child: SizedBox(
         // aspectRatio: 1,
         height: _getBarGroupsRaw().length * 14.0,
         child: BarChart(

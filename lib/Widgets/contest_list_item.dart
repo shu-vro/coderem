@@ -6,10 +6,10 @@ class ContestListItem extends StatefulWidget {
   final Function(Map<String, dynamic>) onAlarmChanged;
 
   const ContestListItem({
-    Key? key,
+    super.key,
     required this.contest,
     required this.onAlarmChanged,
-  }) : super(key: key);
+  });
 
   @override
   _ContestListItemState createState() => _ContestListItemState();

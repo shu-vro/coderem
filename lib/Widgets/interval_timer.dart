@@ -6,8 +6,7 @@ class IntervalTimer extends StatefulWidget {
   final double shrinkFactor;
 
   const IntervalTimer(
-      {Key? key, required this.startTimeSeconds, required this.shrinkFactor})
-      : super(key: key);
+      {super.key, required this.startTimeSeconds, required this.shrinkFactor});
 
   @override
   _TimerWidgetState createState() => _TimerWidgetState();
